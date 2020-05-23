@@ -1,5 +1,5 @@
 let newModelGenerator = require('../newModelGenerator')
 
 module.exports = function (plop) {
-  plop.setGenerator('model', newModelGenerator);
+  plop.setGenerator('model', newModelGenerator('./api', './app', './admin'));
 };
