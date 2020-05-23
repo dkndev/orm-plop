@@ -1,3 +1,4 @@
 module.exports = {
-  closestElement: require('./closestElement'),
+  core: require('./core'),
+  newModelGenerator: require('./newModelGenerator'),
 }
