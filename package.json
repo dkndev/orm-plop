@@ -1,0 +1,32 @@
+{
+  "name": "orm-plop",
+  "version": "0.0.1",
+  "description": "Plop utilities that harmonize VuexORM, Laravel and Quasar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ldiebold/orm-plop.git"
+  },
+  "keywords": [
+    "vuex",
+    "vuex-orm",
+    "laravel",
+    "quasar",
+    "plop"
+  ],
+  "author": "Luke Diebold",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ldiebold/orm-plop/issues"
+  },
+  "homepage": "https://github.com/ldiebold/orm-plop#readme",
+  "dependencies": {
+    "collect.js": "^4.25.0",
+    "dayjs": "^1.8.27",
+    "lodash": "^4.17.15",
+    "pluralize": "^8.0.0"
+  }
+}
