@@ -1,5 +1,5 @@
 {
-  "name": "orm-plop",
+  "name": "@ldiebold/orm-plop",
   "version": "0.0.1",
   "description": "Plop utilities that harmonize VuexORM, Laravel and Quasar",
   "main": "index.js",
