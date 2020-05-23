@@ -26,6 +26,7 @@
   "dependencies": {
     "collect.js": "^4.25.0",
     "dayjs": "^1.8.27",
+    "inquirer-recursive": "0.0.6",
     "lodash": "^4.17.15",
     "pluralize": "^8.0.0"
   }

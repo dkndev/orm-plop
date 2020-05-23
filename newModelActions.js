@@ -15,7 +15,7 @@ module.exports = (backend_path, app_path, admin_path) => {
     context.timestampFields = collect(context.fields)
       .filter(field => field.type == 'timestamp')
       .all()
-  
+    
     context.fields = context.fields.map(field => {
         // set field.hasDecimals
       if(["float", "double", "decimal"].includes(field.type)) {
@@ -80,7 +80,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${backend_path}/app/{{pascalCase modelName}}.php`,
-        templateFile: 'plop/templates/Model.php',
+        templateFile: __dirname + '/templates/Model.php',
         skip() {
           if(!context.backendFiles.includes('model')) return 'not selected'
         }
@@ -89,7 +89,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${backend_path}/database/migrations/${getMigrationTimestamp()}_create_{{snakeCase modelNamePlural}}_table.php`,
-        templateFile: 'plop/templates/create_model_table_migration.php',
+        templateFile: __dirname + '/templates/create_model_table_migration.php',
         skip() {
           if(!context.backendFiles.includes('migration')) return 'not selected'
         }
@@ -98,7 +98,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${backend_path}/database/factories/{{pascalCase modelName}}Factory.php`,
-        templateFile: 'plop/templates/ModelFactory.php',
+        templateFile: __dirname + '/templates/ModelFactory.php',
         skip() {
           if(!context.backendFiles.includes('factory')) return 'not selected'
         }
@@ -107,7 +107,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${backend_path}/app/Http/Routes/{{pascalCase modelName}}Routes.php`,
-        templateFile: 'plop/templates/modelRoutes.php',
+        templateFile: __dirname + '/templates/modelRoutes.php',
         skip() {
           if(!context.backendFiles.includes('routes')) return 'not selected'
         }
@@ -116,7 +116,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${backend_path}/app/Http/Controllers/{{pascalCase modelName}}Controller.php`,
-        templateFile: 'plop/templates/ModelController.php',
+        templateFile: __dirname + '/templates/ModelController.php',
         skip() {
           if(!context.backendFiles.includes('controller')) return 'not selected'
         }
@@ -125,7 +125,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${backend_path}/tests/Feature/API/{{pascalCase modelName}}Test.php`,
-        templateFile: 'plop/templates/ModelApiTest.php',
+        templateFile: __dirname + '/templates/ModelApiTest.php',
         skip() {
           if(!context.backendFiles.includes('apiTests')) return 'not selected'
         }
@@ -134,7 +134,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${backend_path}/tests/Unit/{{pascalCase modelName}}Test.php`,
-        templateFile: 'plop/templates/ModelUnitTest.php',
+        templateFile: __dirname + '/templates/ModelUnitTest.php',
         skip() {
           if(!context.backendFiles.includes('unitTests')) return 'not selected'
         }
@@ -143,7 +143,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${backend_path}/app/Policies/{{pascalCase modelName}}Policy.php`,
-        templateFile: 'plop/templates/ModelPolicy.php',
+        templateFile: __dirname + '/templates/ModelPolicy.php',
         skip() {
           if(!context.backendFiles.includes('policy')) return 'not selected'
         }
@@ -152,7 +152,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${backend_path}/app/Observers/{{pascalCase modelName}}Observer.php`,
-        templateFile: 'plop/templates/ModelObserver.php',
+        templateFile: __dirname + '/templates/ModelObserver.php',
         skip() {
           if(!context.backendFiles.includes('observer')) return 'not selected'
         }
@@ -161,7 +161,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${backend_path}/database/seeds/{{pascalCase modelName}}Seeder.php`,
-        templateFile: 'plop/templates/ModelSeeder.php',
+        templateFile: __dirname + '/templates/ModelSeeder.php',
         skip() {
           if(!context.backendFiles.includes('seeder')) return 'not selected'
         }
@@ -171,7 +171,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${admin_path}/src/store/classes/{{pascalCase modelName}}.js`,
-        templateFile: 'plop/templates/ModelClass.js',
+        templateFile: __dirname + '/templates/ModelClass.js',
         skip() {
           if(!context.adminFiles.includes('vuexOrmClass')) return 'not selected'
         }
@@ -180,7 +180,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${admin_path}/src/components/Create{{pascalCase modelName}}Button.vue`,
-        templateFile: 'plop/templates/CreateModelButton.vue',
+        templateFile: __dirname + '/templates/CreateModelButton.vue',
         skip() {
           if(!context.adminFiles.includes('createButton')) return 'not selected'
         }
@@ -189,7 +189,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${admin_path}/src/components/Update{{pascalCase modelName}}Button.vue`,
-        templateFile: 'plop/templates/UpdateModelButton.vue',
+        templateFile: __dirname + '/templates/UpdateModelButton.vue',
         skip() {
           if(!context.adminFiles.includes('updateButton')) return 'not selected'
         }
@@ -198,7 +198,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${admin_path}/src/components/{{pascalCase modelName}}Form.vue`,
-        templateFile: 'plop/templates/ModelForm.vue',
+        templateFile: __dirname + '/templates/ModelForm.vue',
         skip() {
           if(
             !context.adminFiles.includes('form')
@@ -213,7 +213,7 @@ module.exports = (backend_path, app_path, admin_path) => {
           type: 'add',
           data: { field },
           path: `${admin_path}/src/components/{{pascalCase modelName}}${_.upperFirst(_.camelCase(field.name))}Input.vue`,
-          templateFile: 'plop/templates/ModelFieldInput.vue',
+          templateFile: __dirname + '/templates/ModelFieldInput.vue',
           skip() {
             if(!context.adminFiles.includes('inputFieldComponents')) return 'not selected'
           }
@@ -227,7 +227,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${app_path}/src/store/classes/{{pascalCase modelName}}.js`,
-        templateFile: 'plop/templates/ModelClass.js',
+        templateFile: __dirname + '/templates/ModelClass.js',
         skip() {
           if(!context.clientFiles.includes('vuexOrmClass')) return 'not selected'
         }
@@ -236,7 +236,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${app_path}/src/components/Create{{pascalCase modelName}}Button.vue`,
-        templateFile: 'plop/templates/CreateModelButton.vue',
+        templateFile: __dirname + '/templates/CreateModelButton.vue',
         skip() {
           if(!context.clientFiles.includes('createButton')) return 'not selected'
         }
@@ -245,7 +245,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${app_path}/src/components/Update{{pascalCase modelName}}Button.vue`,
-        templateFile: 'plop/templates/UpdateModelButton.vue',
+        templateFile: __dirname + '/templates/UpdateModelButton.vue',
         skip() {
           if(!context.clientFiles.includes('updateButton')) return 'not selected'
         }
@@ -254,7 +254,7 @@ module.exports = (backend_path, app_path, admin_path) => {
       {
         type: 'add',
         path: `${app_path}/src/components/{{pascalCase modelName}}Form.vue`,
-        templateFile: 'plop/templates/ModelForm.vue',
+        templateFile: __dirname + '/templates/ModelForm.vue',
         skip() {
           if(!context.clientFiles.includes('form')) return 'not selected'
         }
@@ -265,7 +265,7 @@ module.exports = (backend_path, app_path, admin_path) => {
           type: 'add',
           data: { field },
           path: `${app_path}/src/components/{{pascalCase modelName}}${_.upperFirst(_.camelCase(field.name))}Input.vue`,
-          templateFile: 'plop/templates/ModelFieldInput.vue',
+          templateFile: __dirname + '/templates/ModelFieldInput.vue',
           skip() {
             if(!context.clientFiles.includes('inputFieldComponents')) return 'not selected'
           }
